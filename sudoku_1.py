@@ -1,4 +1,3 @@
-#grid references are given as (y,x)
 
 import numpy as np
 
