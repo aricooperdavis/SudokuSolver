@@ -7,6 +7,8 @@ This is just a quick and dirty implementation of the [backtracking](https://en.w
 ## Features
 Solves sudoku puzzles of any difficulty, either while describing each step in the process (if you use the first script) or silently (if you use the second script). It's barebones, designed to be a simple understandable implementation, rather than anything too fancy.
 
+![Animation illustrating the computational steps made in solving a puzzle](https://raw.githubusercontent.com/aricooperdavis/SudokuSolver/master/sudoku/animation.gif)
+
 ## Installation & Usage
 Clone the repo, and install Python (and Numpy).
 
