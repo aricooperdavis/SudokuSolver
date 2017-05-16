@@ -1,18 +1,20 @@
 # SudokuSolver
-A simple Sudoku solver that uses backtracking to solve any puzzle regardless of difficulty.
+A simple Sudoku solver that uses backtracking to solve any puzzle regardless of difficulty. Implemented in both Python 2.7 and Processing (java).
 
 ## Introduction
 This is just a quick and dirty implementation of the [backtracking](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms#Backtracking) algorithm for Sudoku solving. This uses [Numpy](http://www.numpy.org/) for nicer array manipulation, but that's not necessary, it just made development quicker.
 
 ## Features
-Solves sudoku puzzles of any difficulty, either while describing each step in the process (if you use the first script) or silently (if you use the second script). It's barebones, designed to be a simple understandable implementation, rather than anything too fancy.
+Solves sudoku puzzles of any difficulty, either while describing each step in the process (if you use the first script) or silently (if you use the second script). It's barebones, designed to be a simple understandable implementation, rather than anything too fancy. It will provide a solution to any valid puzzle you give it, even if the puzzle has multiple possible answers.
+
+The processing version will illustrate the steps that it uses to solve the problem on a sudoku grid as it solves it.
 
 ![Animation illustrating the computational steps made in solving a puzzle](https://raw.githubusercontent.com/aricooperdavis/SudokuSolver/master/sudoku/animation.gif)
 
 ## Installation & Usage
-Clone the repo, and install Python (and Numpy).
+Clone the repo, and install Python (and Numpy), or, to use the processing version just open the sketch in processing and run it.
 
-Edit one of the scripts and type in a puzzle on line 5, using 0's as blank spaces. For example:
+Edit one of the scripts and type in a puzzle at the top, using 0's as blank spaces. For example:
 
     (6, 0, 0, 0, 0, 0, 0, 5, 1),
     (0, 0, 0, 3, 0, 0, 9, 0, 0),
