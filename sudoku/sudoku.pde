@@ -42,14 +42,14 @@ void text_on_grid(int[] grid, int grid_space, color text_color) {
 int[] init_grid() {
   int[] grid = {
     6, 0, 0, 0, 0, 0, 0, 5, 1,
-    0, 0, 0, 3, 0, 0, 9, 0, 0,
-    0, 0, 8, 0, 0, 0, 0, 0, 0, 
-    0, 4, 0, 7, 0, 0, 5, 0, 0, 
-    0, 0, 0, 0, 9, 0, 8, 0, 0, 
+    0, 0, 0, 3, 0, 0, 9, 0, 8,
+    0, 0, 8, 0, 0, 0, 0, 0, 3, 
+    0, 4, 0, 7, 0, 0, 5, 0, 6, 
+    0, 0, 0, 0, 9, 0, 8, 0, 2, 
     0, 0, 1, 8, 5, 0, 0, 3, 7, 
     5, 0, 2, 6, 0 ,0, 0, 0, 4, 
     3, 0, 0, 0, 0, 7, 0, 2, 9, 
-    0, 0, 4, 0, 0, 0, 0, 0, 0
+    1, 7, 4, 9, 3, 2, 6, 8, 5
   };
   return(grid);
 }
@@ -99,6 +99,7 @@ void draw() {
   int grid_space = draw_grid();
   text_on_grid(grid, grid_space, blu);
   text_on_grid(grid_original, grid_space, 0); 
+  saveFrame("frames/####.png");
   
   if ((grid_original[ik] == 0) && (forwards)) {
     for (int a = 1; a < 10; a = a+1) {
