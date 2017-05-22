@@ -10,7 +10,7 @@ void setup() {
   int[] grid = init_grid();
   color black = color(0, 0, 0);
   text_on_grid(grid, grid_space, black);
-  frameRate(4);
+  frameRate(5);
 }
 
 int draw_grid() {
@@ -34,29 +34,36 @@ void text_on_grid(int[] grid, int grid_space, color text_color) {
   fill(text_color);
   for (int i = 0; i < grid.length; i = i+1){
     if (grid[i] != 0) {
-      text(str(grid[i]), (i%9)*grid_space+40, (i/9)*grid_space+62);
+      text(str(grid[i]), (i%9)*grid_space+40, int(i/9)*grid_space+62);
     }
   }
-} 
+}
+
+void cell_highlight(int ik, int grid_space) {
+  fill(color(255, 255, 204));
+  stroke(color(255, 0, 0));
+  rect((ik%9)*grid_space+25, int(ik/9)*grid_space+25, grid_space, grid_space);
+  stroke((color(0, 0, 0)));
+}
 
 int[] init_grid() {
   int[] grid = {
     6, 0, 0, 0, 0, 0, 0, 5, 1,
-    0, 0, 0, 3, 0, 0, 9, 0, 8,
-    0, 0, 8, 0, 0, 0, 0, 0, 3, 
-    0, 4, 0, 7, 0, 0, 5, 0, 6, 
-    0, 0, 0, 0, 9, 0, 8, 0, 2, 
-    0, 0, 1, 8, 5, 0, 0, 3, 7, 
-    5, 0, 2, 6, 0 ,0, 0, 0, 4, 
-    3, 0, 0, 0, 0, 7, 0, 2, 9, 
-    1, 7, 4, 9, 3, 2, 6, 8, 5
+    0, 0, 0, 3, 0, 0, 9, 0, 0,
+    0, 0, 8, 0, 0, 0, 0, 0, 0,
+    0, 4, 0, 7, 0, 0, 5, 0, 0,
+    0, 0, 0, 0, 9, 0, 8, 0, 0,
+    0, 0, 1, 8, 5, 0, 0, 3, 7,
+    5, 0, 2, 6, 0 ,0, 0, 0, 4,
+    3, 0, 0, 0, 0, 7, 0, 2, 9,
+    0, 0, 4, 0, 0, 0, 0, 0, 0
   };
   return(grid);
 }
 
 int[] cell(int ref, int[] grid){
-  int cell_row = (ref/9)/3;
-  int cell_column = (ref%9)/3;
+  int cell_row = int(int(ref/9)/3);
+  int cell_column = int((ref%9)/3);
   int[] cell = new int[9];
   for (int x = 0; x < 3; x = x+1){
     for (int y = 0; y < 3; y = y+1){
@@ -67,7 +74,7 @@ int[] cell(int ref, int[] grid){
 }
 
 int[] row(int ref, int[] grid){
-  int row_n = (ref/9);
+  int row_n = int(ref/9);
   int[] row = new int[9];
   for (int x = 0; x < 9; x = x+1){
     row[x] = grid[x+(9*row_n)];
@@ -97,10 +104,10 @@ void draw() {
   color blu = color(50, 50, 255);
   background(255);
   int grid_space = draw_grid();
+  cell_highlight(ik, grid_space);
   text_on_grid(grid, grid_space, blu);
-  text_on_grid(grid_original, grid_space, 0); 
-  saveFrame("frames/####.png");
-  
+  text_on_grid(grid_original, grid_space, 0);
+
   if ((grid_original[ik] == 0) && (forwards)) {
     for (int a = 1; a < 10; a = a+1) {
       if (!is_in(a, cell(ik, grid)) && !is_in(a, row(ik, grid)) && !is_in(a, column(ik, grid))){
@@ -117,11 +124,11 @@ void draw() {
       }
     }
   }
-  
+
   else if ((grid_original[ik] != 0) && (forwards)){
     ik += 1;
   }
-  
+
   else if ((grid_original[ik] == 0) && (!forwards)){
     if (grid[ik] == 9){
       grid[ik] = 0;
@@ -145,13 +152,12 @@ void draw() {
       }
     }
   }
-  
+
   else if ((grid_original[ik] != 0) && (!forwards)){
     ik -= 1;
   }
-  
+
   if (ik >= 9*9){
-    printArray(grid);
     noLoop();
   }
 }
