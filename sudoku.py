@@ -19,7 +19,7 @@ grid_original = np.array(grid, copy=True)
 
 def grid_ref(number):
     """function converts linear 0-81 item reference to (y,x) item reference"""
-    grid_ref = (number/9, number%9)
+    grid_ref = (number//9, number%9)
     #to get the row we divide by nine and ignore the remainder
     #to get the column we divide by nine and only look at the remainder
     return grid_ref
@@ -34,9 +34,9 @@ def value(grid, number):
 def cell(grid, number):
     """function returns array describing the cell that a linear item is in"""
     g_r = grid_ref(number)
-    cell_ref = (g_r[0]/3, g_r[1]/3)
+    cell_ref = (g_r[0]//3, g_r[1]//3)
     cell = grid[((cell_ref[0])*3):((cell_ref[0])*3)+3, ((cell_ref[1])*3):((cell_ref[1])*3)+3]
-    #cells are 3 wide and high    
+    #cells are 3 wide and high
     return cell
 
 def row(grid, number):
@@ -53,7 +53,7 @@ def column(grid, number):
     column = grid[0:9, (column_ref):(column_ref+1)]
     return column
 
-print grid
+print(grid)
 #print the initial sudoku grid
 
 forwards = True
@@ -70,7 +70,7 @@ while i <9*9:
                 print("Placing "+str(a)+" at "+str(grid_ref(i))+".")
                 grid[grid_ref(i)] = a
                 i += 1
-                print grid
+                print(grid)
                 break
             else:
                 print("Can't place "+str(a)+" here.")
@@ -89,7 +89,7 @@ while i <9*9:
             print("Cell can't be any other value; we can't place anything here!")
             grid[grid_ref(i)] = 0
             print("Resetting "+str(grid_ref(i))+" to zero.")
-            print grid
+            print(grid)
             i -= 1
         else:
             for a in range(grid[grid_ref(i)]+1, 10):
@@ -97,7 +97,7 @@ while i <9*9:
                 if a not in cell(grid, i) and a not in row(grid, i) and a not in column(grid, i):
                     print("Placing "+str(a)+" at "+str(grid_ref(i))+".")
                     grid[grid_ref(i)] = a
-                    print grid
+                    print(grid)
                     forwards = True
                     i += 1
                     break
@@ -106,7 +106,7 @@ while i <9*9:
                     if a == 9:
                         print("We can't place anything here!")
                         grid[grid_ref(i)] = 0
-                        print grid
+                        print(grid)
                         i -= 1
                         break
 
@@ -114,4 +114,4 @@ while i <9*9:
         print("Cell is filled in orignial grid, can't place here.")
         i -= 1
 
-print grid
+print(grid)

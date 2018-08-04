@@ -2,21 +2,21 @@
 import numpy as np
 
 grid = np.array([
-    (6, 0, 0, 0, 0, 0, 0, 5, 1),
-    (0, 0, 0, 3, 0, 0, 9, 0, 0),
-    (0, 0, 8, 0, 0, 0, 0, 0, 0),
-    (0, 4, 0, 7, 0, 0, 5, 0, 0),
-    (0, 0, 0, 0, 9, 0, 8, 0, 0),
-    (0, 0, 1, 8, 5, 0, 0, 3, 7),
-    (5, 0, 2, 6, 0 ,0, 0, 0, 4),
-    (3, 0, 0, 0, 0, 7, 0, 2, 9),
-    (0, 0, 4, 0, 0, 0, 0, 0, 0)
+    (0, 0, 5, 8, 7, 1, 4, 0, 0),
+    (0, 1, 7, 0, 0, 0, 8, 9, 5),
+    (4, 0, 0, 0, 0, 0, 0, 1, 7),
+    (7, 3, 0, 2, 5, 4, 0, 8, 6),
+    (5, 4, 0, 1, 6, 8, 0, 7, 0),
+    (8, 6, 0, 9, 3, 7, 0, 5, 4),
+    (2, 5, 0, 0, 0 ,0, 7, 4, 9),
+    (0, 7, 0, 0, 0, 0, 0, 2, 0),
+    (0, 0, 4, 7, 0, 2, 5, 0, 0)
     ])
 
 grid_original = np.array(grid, copy=True)
 
 def grid_ref(number):
-    grid_ref = (number/9, number%9)
+    grid_ref = (number//9, number%9)
     return grid_ref
 
 def value(grid, number):
@@ -26,7 +26,7 @@ def value(grid, number):
 
 def cell(grid, number):
     g_r = grid_ref(number)
-    cell_ref = (g_r[0]/3, g_r[1]/3)
+    cell_ref = (g_r[0]//3, g_r[1]//3)
     cell = grid[((cell_ref[0])*3):((cell_ref[0])*3)+3, ((cell_ref[1])*3):((cell_ref[1])*3)+3]
     return cell
 
@@ -42,7 +42,7 @@ def column(grid, number):
     column = grid[0:9, (column_ref):(column_ref+1)]
     return column
 
-print grid
+print(grid)
 print("\n Processing... \n")
 
 forwards = True
@@ -84,4 +84,4 @@ while i <9*9:
     elif value(grid_original, i) != 0 and not forwards:
         i -= 1
 
-print grid
+print(grid)
