@@ -1,5 +1,5 @@
 # SudokuSolver
-A simple Sudoku solver that uses backtracking to solve any puzzle regardless of difficulty. Implemented in both Python 2.7 and Processing (java).
+A simple Sudoku solver that uses backtracking to solve any puzzle regardless of difficulty. Implemented in both Python 3 and Processing (java).
 
 ## Introduction
 This is just a quick and dirty implementation of the [backtracking](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms#Backtracking) algorithm for Sudoku solving. This uses [Numpy](http://www.numpy.org/) for nicer array manipulation, but that's not necessary, it just made development quicker.
